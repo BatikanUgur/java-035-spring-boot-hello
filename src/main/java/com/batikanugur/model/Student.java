@@ -18,6 +18,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //@Column (name = "firstName") bu şekilde isimlendirme yapabiliriz, default olarak db'Ye first_name yazacak.
     private String firstName;
 
     private String lastName;
