@@ -41,9 +41,9 @@ public class StudentController {
     }
 
     //Get * select where
-    //http:localhost:8090/api/v1/student
+    //http:localhost:8090/api/v1/student/1
     @GetMapping("/student/{id}")
-    public Student getStudent(@PathVariable(name = "id") Long id) {
+    public Student getStudent(@PathVariable (name = "id") Long id) {
         return studentService.getStudent(id);
     }
 
@@ -61,7 +61,14 @@ public class StudentController {
 
         Student studentInfo = studentService.getStudent(id);
 
-        return studentService.updateStudent(student);
+        if (studentInfo == null) {
+            return Optional.empty();
+        } else {
+
+            student.setId(id);
+
+            return studentService.updateStudent(student);
+        }
     }
 
     // Delete - Delete

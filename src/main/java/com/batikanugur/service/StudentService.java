@@ -24,7 +24,7 @@ public class StudentService {
     }
 
     public Student getStudent(Long id) {
-        return studentRepository.getReferenceById(id);
+        return studentRepository.findById(id).get();
     }
 
     public Student addStudent(Student student) {
@@ -32,17 +32,6 @@ public class StudentService {
     }
 
     public Optional<Student> updateStudent(Student student){
-
-        Student studentInfo = getStudent(student.getId());
-        if(studentInfo==null){
-            return Optional.empty();
-        }
-/*        studentInfo.setId(id);
-        studentInfo.setFirstName(student.getFirstName());
-        studentInfo.setLastName(student.getLastName());
-        studentInfo.setEmail(student.getEmail());
-  */
-
         return Optional.of(studentRepository.save(student));
     }
 
